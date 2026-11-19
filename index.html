@@ -73,6 +73,8 @@ th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px sol
 th{font-family:"Archivo";font-size:13px;letter-spacing:.05em;text-transform:uppercase;background:var(--surface2);color:var(--ink)}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 tr:last-child td{border-bottom:none}
+table.batt,table.inc{table-layout:fixed}
+table.batt td[data-l="Usable"],table.batt td[data-l="Output"]{white-space:normal}
 .hl{font-weight:700;color:var(--amber)}
 @media(max-width:760px){
   table,thead,tbody,tr,td{display:block;width:100%} thead{display:none}
@@ -210,7 +212,7 @@ footer{margin:48px 0 0;border-top:1px solid var(--line);padding:26px 0 44px}
   <p>This is the single biggest change from prior years, and the section where sales claims are most likely to be wrong. Every row below carries the report's hedge exactly as researched on 31 October 2026.</p></div>
 
   <div style="overflow-x:auto">
-  <table aria-label="Incentives in 2026">
+  <table aria-label="Incentives in 2026" class="inc"><colgroup><col style="width:22%"><col style="width:28%"><col style="width:50%"></colgroup>
     <thead><tr><th>Path</th><th>2026 status</th><th>What it means for you</th></tr></thead>
     <tbody>
       <tr><td data-l="Path"><strong>Purchased solar + battery</strong> — federal §25D</td><td data-l="Status"><span class="hl">$0</span></td><td data-l="Meaning">Credit not available for property placed in service after Dec 31, 2025 (One Big Beautiful Bill Act, P.L. 119-21, signed July 4, 2025). Timing rule: the expenditure counts when <em>installation is completed</em> — signing or paying in 2025 never preserved it. No phase-down: 30% → 0% on Jan 1, 2026. §25C home-improvement credit ended the same day.</td></tr>
@@ -326,7 +328,7 @@ footer{margin:48px 0 0;border-top:1px solid var(--line);padding:26px 0 44px}
   <div class="sec-head"><p class="k">6 · Hardware landscape 2026</p><h2>Five battery platforms, compared</h2>
   <p>Specs are manufacturers' published figures as compiled by 2026 comparison sources <span class="tag pub">Published</span>; installed prices are <span class="tag est">Estimate</span> ranges from installer/marketplace guides, before incentives. <strong>Mind the generational trap:</strong> FranklinWH “aPower” (13.6 kWh / 5 kW) and “aPower 2” (15 kWh / 10 kW) are different products, as are Generac PWRcell vs PWRcell 2 and Enphase 5P vs the newer 10C — confirm the exact model on any quote.</p></div>
   <div style="margin-top:18px">
-  <table aria-label="Battery platforms">
+  <table aria-label="Battery platforms" class="batt"><colgroup><col style="width:15%"><col style="width:11%"><col style="width:11%"><col style="width:41%"><col style="width:22%"></colgroup>
     <thead><tr><th>Platform</th><th class="num">Usable / unit</th><th class="num">Continuous / unit</th><th>Whole-home backup &amp; fit for this house</th><th class="num">Installed, 1 unit</th></tr></thead>
     <tbody>
       <tr><td data-l="Platform"><strong>Tesla Powerwall 3</strong></td><td data-l="Usable" class="num">13.5 kWh (LFP)</td><td data-l="Output" class="num"><strong>11.5 kW</strong></td><td data-l="Fit">Yes — highest single-unit power in class; integrated solar inverter. 2 units = 27 kWh / 23 kW. Strongest simple answer for well-pump + HVAC starting loads. 10-yr warranty. DC-coupled solar, so panel-level shade needs string design care (optimizers / careful stringing).</td><td data-l="Price" class="num">$12,000–$18,500<br><span class="src">2 units $24,000–$30,000</span></td></tr>
