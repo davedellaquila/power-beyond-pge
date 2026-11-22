@@ -502,5 +502,41 @@ footer{margin:48px 0 0;border-top:1px solid var(--line);padding:26px 0 44px}
   calc();
 })();
 </script>
+
+<style id="pwr-lightbox-style">
+img{cursor:zoom-in}
+#pwr-lightbox{position:fixed;inset:0;background:rgba(12,10,8,.94);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:200;padding:18px}
+#pwr-lightbox.open{display:flex}
+#pwr-lightbox img{max-width:96vw;max-height:84vh;object-fit:contain;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.5);cursor:auto}
+#pwr-lb-cap{color:#f3ead8;font-family:-apple-system,sans-serif;font-size:15px;text-align:center;margin-top:14px;line-height:1.45;max-width:92vw}
+#pwr-lb-close{position:absolute;top:10px;right:14px;background:none;border:none;color:#f3ead8;font-size:30px;line-height:1;cursor:pointer;padding:8px}
+</style>
+<div id="pwr-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button id="pwr-lb-close" type="button" aria-label="Close photo">✕</button>
+  <img id="pwr-lb-img" alt="">
+  <div id="pwr-lb-cap"></div>
+</div>
+<script id="pwr-lightbox-script">
+(function(){
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('img'));
+  var box = document.getElementById('pwr-lightbox');
+  var big = document.getElementById('pwr-lb-img');
+  var capEl = document.getElementById('pwr-lb-cap');
+  function close(){ box.classList.remove('open'); document.body.style.overflow = ''; }
+  imgs.forEach(function(img){
+    if(img.id === 'pwr-lb-img') return;
+    img.addEventListener('click', function(){
+      big.src = img.getAttribute('src');
+      big.alt = img.getAttribute('alt') || '';
+      capEl.textContent = img.getAttribute('alt') || '';
+      box.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.getElementById('pwr-lb-close').addEventListener('click', close);
+  box.addEventListener('click', function(e){ if(e.target === box) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
